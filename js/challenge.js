@@ -4,3 +4,6 @@
 // add eventListeners with click and function arg
 // within pauseCounter all buttons should be disbaled except pause btn and button should show text "resume"
 // and restart counter and re-enable buttons.
+document.addEventListener("DOMContentLoaded", function (){
+  
+});
