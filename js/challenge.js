@@ -6,10 +6,11 @@
 // and restart counter and re-enable buttons.
 document.addEventListener("DOMContentLoaded", function (){
   window.setInterval(incrementTimer, 1000);
-});
+
 
 function incrementTimer() {
   const counter = document.getElementById('counter');
   let counterNum = parseInt(counter.innerHtml);
   counter.innerHtml = counterNum
 }
+});
