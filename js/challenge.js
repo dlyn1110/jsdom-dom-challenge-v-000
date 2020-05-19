@@ -5,5 +5,5 @@
 // within pauseCounter all buttons should be disbaled except pause btn and button should show text "resume"
 // and restart counter and re-enable buttons.
 document.addEventListener("DOMContentLoaded", function (){
-  
+  window.setInterval(incrementTimer,1000);
 });
