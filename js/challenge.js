@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /// DOM Elements
-    let minus = document.getElementById("-")
-    let plus = document.getElementById("+")
-    let love = document.getElementById("<3")
+    let minus = document.getElementById("minus")
+    let plus = document.getElementById("plus")
+    let love = document.getElementById("heart")
     let pause = document.getElementById("pause")
     let likes = document.querySelector(".likes")
 
