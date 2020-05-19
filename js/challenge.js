@@ -9,5 +9,5 @@ document.addEventListener("DOMContentLoaded", function (){
 });
 
 function incrementTimer() {
-  
+  const counter = document.getElementById('counter');
 }
