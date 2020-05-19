@@ -4,13 +4,9 @@
 // add eventListeners with click and function arg
 // within pauseCounter all buttons should be disbaled except pause btn and button should show text "resume"
 // and restart counter and re-enable buttons.
-document.addEventListener("DOMContentLoaded", function (){
-  setInterval(incrementTimer, 1000);
+document.addEventListener("DOMContentLoaded", () => {
+  let counter = document.getElementById('counter')
 
-
-function incrementTimer() {
-  const counter = document.getElementById('counter');
-  let counterNum = parseInt(counter.innerHtml);
-  counter.innerHtml = counterNum
-}
-});
+  let count = setInterval(function () {
+    counter.innerHtml++;
+  }, 1000);
