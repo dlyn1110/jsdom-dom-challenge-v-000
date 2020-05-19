@@ -1,74 +1,62 @@
-// add timer to set to seconds
-document.addEventListener("DOMContentLoaded", () => {
+var i =-1;
+var j = 0;
+var interval = setInterval( increment, 1000);
+function increment(){
+    i++;
+    document.querySelector('h1#counter').textContent = i;
+    j = 0;
+}
+increment();
 
-    /// counter inner text
-    let counter = document.querySelector("#counter")
+document.getElementById("minus").addEventListener("click", function(){
+  i--;
+  document.querySelector('h1#counter').textContent = i;
+});
 
-    ///// runs counter every second
-    let count = setInterval(function () {
-        counter.innerText++;
-    }, 1000);
+document.getElementById("plus").addEventListener("click", function(){
+  i++;
+  document.querySelector('h1#counter').textContent = i;
+});
 
+document.getElementById("heart").addEventListener("click", function(){
+  j++;
+  var li = document.createElement("li");
+  var node = document.createTextNode(i + " has been liked " + j + " time(s).")
+  var likes = document.querySelector('.likes')
+  var lastLike = document.querySelector('.likes').lastChild
+  li.appendChild(node);
+  if(j>1){
+   lastLike.replaceWith(li)
+  } else {
+    likes.appendChild(li);
+  }
+});
 
-    /// DOM Elements
-    let minus = document.getElementById("minus")
-    let plus = document.getElementById("plus")
-    let love = document.getElementById("heart")
-    let pause = document.getElementById("pause")
-    let likes = document.querySelector(".likes")
+document.getElementById("pause").addEventListener("click", function(){
+  if(document.querySelector('#pause').innerText == "pause") {
+    clearInterval(interval)
+    document.querySelector('#pause').innerText = "resume"
+    document.getElementById("minus").disabled = true;
+    document.getElementById("plus").disabled = true;
+    document.getElementById("heart").disabled = true;
+    document.getElementById("submit").disabled = true;
+  } else {
+    interval = setInterval( increment, 1000);
+    document.querySelector('#pause').innerText = "pause"
+    document.getElementById("minus").disabled = false;
+    document.getElementById("plus").disabled = false;
+    document.getElementById("heart").disabled = false;
+    document.getElementById("submit").disabled = false;
+  }
+});
 
-    let submitBtn = document.querySelector("#submit")
-    let commentList = document.querySelector("#list")
-
-
-    // minus button
-    minus.addEventListener("click", function(e){
-        counter.innerText--;
-    });
-
-    // plus button
-    plus.addEventListener("click", function(e){
-        counter.innerText++;
-    });
-
-
-    // pause button
-    pause.addEventListener("click", function(e){
-        if (pause.innerText === "pause"){
-            pause.innerText = "resume"
-            clearInterval(count)
-
-            plus.disabled = true;
-            minus.disabled = true;
-            love.disabled = true;
-            submitBtn.disabled = true;
-        }
-        else {
-            count = setInterval(function () {
-                counter.innerText++;
-            }, 1000);
-            pause.innerText = "pause"
-
-            plus.disabled = false;
-            minus.disabled = false;
-            love.disabled = false;
-            submitBtn.disabled = false;
-        }
-    });
-
-    // love button
-    love.addEventListener("click", function(e){
-        let obj = document.getElementById('heart').innerHTML;
-        obj ? obj.innerText++ :
-        likes.innerHTML += `<li id=${counter.innerText}>${counter.innerText} is liked <span id=${counter.innerText}>1</span> times.</li>`
-    });
-
-    // submit comments // button
-    submitBtn.addEventListener("click", function(e){
-        e.preventDefault();
-        let comment = document.querySelector("#comment-form > input[type=text]").value
-        commentList.innerHTML += `<li>${comment}</li>`
-        document.querySelector("#comment-form").reset();
-    });
-
+document.getElementById("submit").addEventListener("click", function(event){
+  event.preventDefault();
+  var comment = document.querySelector('input#comment-input').value
+  var commentsList = document.querySelector('.comments')
+  var p = document.createElement("p");
+  var node = document.createTextNode(comment)
+  p.appendChild(node);
+  commentsList.appendChild(p);
+  document.querySelector('input#comment-input').value = ''
 });
