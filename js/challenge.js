@@ -7,3 +7,7 @@
 document.addEventListener("DOMContentLoaded", function (){
   window.setInterval(incrementTimer, 1000);
 });
+
+function incrementTimer() {
+  
+}
