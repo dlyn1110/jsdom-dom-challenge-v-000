@@ -10,6 +10,6 @@ document.addEventListener("DOMContentLoaded", function (){
 
 function incrementTimer() {
   const counter = document.getElementById('counter');
-  let counterNum = parseImt(counter.innerHtml);
+  let counterNum = parseInt(counter.innerHtml);
   counter.innerHtml = counterNum
 }
